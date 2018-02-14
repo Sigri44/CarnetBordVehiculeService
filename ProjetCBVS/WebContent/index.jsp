@@ -17,7 +17,16 @@
 		        <section id="main">
 		            <div class="row">
 		            	<div>Ceci sera un premier graphique</div>
-		            </div> 
+		            	<img src="<%=request.getContextPath() %>/img/600x300.svg" />
+		            </div>
+		            <div class="row">
+		            	<div>Ceci est un second</div>
+		            	<img src="<%=request.getContextPath() %>/img/600x300.svg" />
+		            </div>
+		            <div class="row">
+		            	<div>Et un troisième</div>
+		            	<img src="<%=request.getContextPath() %>/img/600x300.svg" />
+		            </div>
 		        </section>
 			</div>
 			

@@ -13,15 +13,24 @@
         </header>
         
         <div class="row">
-	        <div class="col-xs-12 col-md-12 col-lg-10">
+	        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
 		        <section id="main">
 		            <div class="row">
 		            	<div>Ceci sera un premier graphique</div>
-		            </div> 
+		            	<img src="<%=request.getContextPath() %>/img/600x300.svg" />
+		            </div>
+		            <div class="row">
+		            	<div>Ceci est un second</div>
+		            	<img src="<%=request.getContextPath() %>/img/600x300.svg" />
+		            </div>
+		            <div class="row">
+		            	<div>Et un troisième</div>
+		            	<img src="<%=request.getContextPath() %>/img/600x300.svg" />
+		            </div>
 		        </section>
 			</div>
 			
-			<div class="col-xs-12 col-md-12 col-lg-2">
+			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
 				<div class="row">
 					<aside id ="sidebar" class="col-xs-12 col-md-12 col-lg-12">
 			            <div class="row">

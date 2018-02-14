@@ -1,6 +1,8 @@
-		<h3>Menu</h3>
-		<nav>
-			<ul>
-				<li><a href="/login/pageAcces">Connexion</a></li>
-			</ul>
-		</nav>
+		<!-- Menu Accueil -->
+		<%@include file="../menu/menuPrincipal.html" %>
+		
+		<!-- Menu User -->
+		<%@include file="../menu/menuUser.html" %>
+		
+		<!-- Menu Admin -->
+		<%@include file="../menu/menuAdmin.html" %>

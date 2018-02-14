@@ -5,14 +5,21 @@ public class Voiture {
 	//Instantiation des variables
 	private int idVoiture;
 	private String immatriculation;
-	private float kilometrage;
+	private int kilometrage;
 	
 	//Constructeur
-	public Voiture(int idVoiture, String immatriculation, float kilometrage) {
-		super();
+	public Voiture(int idVoiture, String immatriculation, int kilometrage) {
+		this(immatriculation,kilometrage);
 		this.idVoiture = idVoiture;
+	}
+	
+	public Voiture(String immatriculation, int kilometrage) {
 		this.immatriculation = immatriculation;
 		this.kilometrage = kilometrage;
+	}
+	
+	public Voiture() {
+		
 	}
 
 	//Getters & Setters
@@ -36,12 +43,12 @@ public class Voiture {
 	}
 
 
-	public float getKilometrage() {
+	public int getKilometrage() {
 		return kilometrage;
 	}
 
 
-	public void setKilometrage(float kilometrage) {
+	public void setKilometrage(int kilometrage) {
 		this.kilometrage = kilometrage;
 	}
 	

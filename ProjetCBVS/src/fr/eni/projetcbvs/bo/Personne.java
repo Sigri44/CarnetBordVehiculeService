@@ -7,15 +7,25 @@ public class Personne {
  private String prenom;
  private String motDePasse;
  private String email;
+ private int niveau;
  
  //Constructeur
-public Personne(int idPersonne, String nom, String prenom, String motDePasse, String email) {
-	super();
+public Personne(int idPersonne, String nom, String prenom, String motDePasse, String email,int niveau) {
+	this(nom, prenom, motDePasse, email, niveau);
 	this.idPersonne = idPersonne;
+}
+
+public Personne(String nom, String prenom, String motDePasse, String email,int niveau) {
+	super();
 	this.nom = nom;
 	this.prenom = prenom;
 	this.motDePasse = motDePasse;
 	this.email = email;
+	this.niveau = niveau;
+}
+
+public Personne(){
+	
 }
 
 //Getter & Setter
@@ -57,5 +67,14 @@ public String getEmail() {
 public void setEmail(String email) {
 	this.email = email;
 }
+
+public int getNiveau() {
+	return niveau;
+}
+
+public void setNiveau(int niveau) {
+	this.niveau = niveau;
+}
+
  
 }

@@ -1,4 +1,4 @@
-package fr.eni.projetcbvs.dal;
+package fr.eni.projetcbvs.dal.base;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +9,10 @@ import java.util.List;
 
 import fr.eni.projetcbvs.bo.Personne;
 import fr.eni.projetcbvs.bo.Ville;
+import fr.eni.projetcbvs.dal.ConducteurDAO;
+import fr.eni.projetcbvs.dal.DALException;
+import fr.eni.projetcbvs.dal.DaoFactory;
+import fr.eni.projetcbvs.dal.PersonneDAO;
 
 public class ConducteurDAOJdbcImpl implements ConducteurDAO{
 	

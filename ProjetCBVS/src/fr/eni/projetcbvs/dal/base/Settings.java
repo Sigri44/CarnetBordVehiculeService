@@ -1,4 +1,4 @@
-package fr.eni.projetcbvs.dal;
+package fr.eni.projetcbvs.dal.base;
 
 import java.io.IOException;
 import java.util.Properties;

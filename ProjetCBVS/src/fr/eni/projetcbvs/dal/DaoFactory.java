@@ -1,5 +1,12 @@
 package fr.eni.projetcbvs.dal;
 
+import fr.eni.projetcbvs.dal.base.CarnetDAOJdbcImpl;
+import fr.eni.projetcbvs.dal.base.ConducteurDAOJdbcImpl;
+import fr.eni.projetcbvs.dal.base.DeplacementDAOJdbcImpl;
+import fr.eni.projetcbvs.dal.base.PersonneDAOJdbcImpl;
+import fr.eni.projetcbvs.dal.base.VilleDAOJdbcImpl;
+import fr.eni.projetcbvs.dal.base.VoitureDAOJdbcImpl;
+
 public class DaoFactory {
 	
 	public static VoitureDAO getVoitureDAO(){

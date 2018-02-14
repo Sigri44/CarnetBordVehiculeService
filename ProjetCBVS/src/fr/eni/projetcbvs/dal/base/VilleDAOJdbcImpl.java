@@ -1,4 +1,4 @@
-package fr.eni.projetcbvs.dal;
+package fr.eni.projetcbvs.dal.base;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +10,8 @@ import java.util.List;
 
 import fr.eni.projetcbvs.bo.Ville;
 import fr.eni.projetcbvs.bo.Voiture;
+import fr.eni.projetcbvs.dal.DALException;
+import fr.eni.projetcbvs.dal.VilleDAO;
 
 public class VilleDAOJdbcImpl implements VilleDAO{
 

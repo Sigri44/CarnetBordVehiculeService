@@ -1,4 +1,4 @@
-package fr.eni.projetcbvs.dal;
+package fr.eni.projetcbvs.dal.base;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projetcbvs.bo.Personne;
+import fr.eni.projetcbvs.dal.DALException;
+import fr.eni.projetcbvs.dal.PersonneDAO;
 
 public class PersonneDAOJdbcImpl implements PersonneDAO{
 	

@@ -141,5 +141,15 @@ public class Deplacement {
 		this.conducteurs = conducteurs;
 	}
 
+	@Override
+	public String toString() {
+		return "Deplacement [idDeplacement=" + idDeplacement + ", dateDepart=" + dateDepart + ", dateRetour="
+				+ dateRetour + ", lieuDepart=" + lieuDepart + ", lieuRetour=" + lieuRetour + ", montantCarburant="
+				+ montantCarburant + ", litreCarburant=" + litreCarburant + ", commentaire=" + commentaire
+				+ ", kmTotal=" + kmTotal + ", kmPlein=" + kmPlein + ", distanceParcouru=" + distanceParcouru
+				+ ", conducteurs=" + conducteurs + "]";
+	}
+
+	
 	
 }

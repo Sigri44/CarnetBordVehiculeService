@@ -1,14 +1,20 @@
 package fr.eni.projetcbvs.dal;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+
+import fr.eni.projetcbvs.bo.Personne;
+import fr.eni.projetcbvs.bo.Ville;
 
 public class ConducteurDAOJdbcImpl implements ConducteurDAO{
 	
-	private static final String SQL_SELECTBYID = "select idPersonne, idDeplacement from Conducteur where idPersonne=? And idDeplacement=?";
-	private static final String SQL_SELECTALL = "select idPersonne, idDeplacement from Conducteur";
-	private static final String SQL_UPDATE = "update Conducteur set idPersonne=?,idDeplacement=? where idPersonne=? And idDeplacement=?";
 	private static final String SQL_INSERT = "insert into Conducteur(idPersonne, idDeplacement) values(?,?)";
 	private static final String SQL_DELETE = "delete from Conducteur where idPersonne=? And idDeplacement=?";
+	private static final String SQL_SELECTBYID_CONDUCTEUR = "select idPersonne where idDeplacement = ?";
 	
 	public ConducteurDAOJdbcImpl() {
 
@@ -16,32 +22,82 @@ public class ConducteurDAOJdbcImpl implements ConducteurDAO{
 
 	@Override
 	public void insert(int idDeplacement, int idPersonne) throws DALException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(int idDeplacement, int idPersonne) throws DALException {
-		// TODO Auto-generated method stub
-		
+		Connection cnx=null;
+		try {
+			cnx = AccesBase.getConnection();
+			PreparedStatement rqt = cnx.prepareStatement(SQL_INSERT);
+			rqt.setInt(1,idPersonne);
+			rqt.setInt(2,idDeplacement);
+			rqt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			if (cnx!=null){
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 	@Override
 	public void delete(int idDeplacement, int idPersonne) throws DALException {
-		// TODO Auto-generated method stub
-		
+		Connection cnx = null;
+		PreparedStatement rqt = null;
+		try {
+			cnx = AccesBase.getConnection();
+			rqt = cnx.prepareStatement(SQL_DELETE);
+			rqt.setInt(1, idPersonne);
+			rqt.setInt(2, idDeplacement);
+			rqt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rqt != null) {
+					rqt.close();
+					cnx.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
-	public int[] selectById(int idDeplacement, int idPersonne) throws DALException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<int[]> selectAll() throws DALException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Personne> selectConducteurbyDeplacement(int idDeplacement) throws DALException {
+		Connection cnx = null;
+		PreparedStatement rqt = null;
+		ResultSet rs = null;
+		List<Personne> liste = new ArrayList<Personne>();
+		try {
+			cnx = AccesBase.getConnection();
+			rqt = cnx.prepareStatement(SQL_SELECTBYID_CONDUCTEUR);
+			rqt.setInt(1, idDeplacement);
+			rs = rqt.executeQuery();
+			PersonneDAO personneDAO = DaoFactory.getPersonneDAO();
+			Personne personne = null;
+			while (rs.next()) {
+				personne = personneDAO.selectById(rs.getInt("idPersonne"));
+				liste.add(personne);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rqt != null) {
+					rqt.close();
+					cnx.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return liste;
 	}
 
 }

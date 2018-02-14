@@ -43,6 +43,11 @@ public class Ville {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
+
+	@Override
+	public String toString() {
+		return "Ville [idVille=" + idVille + ", ville=" + ville + ", adresse=" + adresse + "]";
+	}
 	
 	
 }

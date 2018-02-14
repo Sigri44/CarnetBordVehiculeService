@@ -76,5 +76,10 @@ public void setNiveau(int niveau) {
 	this.niveau = niveau;
 }
 
+@Override
+public String toString() {
+	return "Personne [idPersonne=" + idPersonne + ", nom=" + nom + ", prenom=" + prenom + ", motDePasse=" + motDePasse
+			+ ", email=" + email + ", niveau=" + niveau + "]";
+}
  
 }

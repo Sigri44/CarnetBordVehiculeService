@@ -51,6 +51,12 @@ public class Voiture {
 	public void setKilometrage(int kilometrage) {
 		this.kilometrage = kilometrage;
 	}
+
+	@Override
+	public String toString() {
+		return "Voiture [idVoiture=" + idVoiture + ", immatriculation=" + immatriculation + ", kilometrage="
+				+ kilometrage + "]";
+	}
 	
 	
 }

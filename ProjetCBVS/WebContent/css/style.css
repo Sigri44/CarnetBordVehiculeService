@@ -1,0 +1,33 @@
+body {
+    background-color: #1E3040;
+    color: #D0ECF2;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+header, section, footer {
+    text-align: center;
+    /*
+    background-color: #657D8C;
+    border-radius: 5px;
+    */
+}
+
+.intro {
+    font-size: 30px;
+}
+
+a {
+    color: #9AC7D9;
+}
+
+a:hover {
+    color: #D99771;
+}
+
+.charteGraphique {
+    color: #1E3040; /* fond */
+    color: #657D8C; /* block */
+    color: #9AC7D9; /* font */
+    color: #D0ECF2; /* clair */
+    color: #D99771; /* beige */
+}

@@ -10,6 +10,7 @@ public class Deplacement {
 	private GregorianCalendar dateRetour;
 	private int lieuDepart;
 	private int lieuRetour;
+	private String natureDeplacement;
 	private float montantCarburant;
 	private int litreCarburant;
 	private String commentaire;
@@ -19,14 +20,14 @@ public class Deplacement {
 	private List<Personne> conducteurs;
 	
 	public Deplacement(int idDeplacement, GregorianCalendar dateDepart, GregorianCalendar dateRetour, int lieuDepart,
-			int lieuRetour, float montantCarburant, int litreCarburant, String commentaire, int kmTotal, int kmPlein,
+			int lieuRetour,String natureDeplacement, float montantCarburant, int litreCarburant, String commentaire, int kmTotal, int kmPlein,
 			int distanceParcouru, List<Personne> conducteurs) {
-		this(dateDepart,dateRetour,lieuDepart,lieuRetour,montantCarburant,litreCarburant,commentaire,kmTotal,kmPlein,distanceParcouru,conducteurs);
+		this(dateDepart,dateRetour,lieuDepart,lieuRetour,natureDeplacement,montantCarburant,litreCarburant,commentaire,kmTotal,kmPlein,distanceParcouru,conducteurs);
 		this.idDeplacement = idDeplacement;
 	}
 	
 	public Deplacement(GregorianCalendar dateDepart, GregorianCalendar dateRetour, int lieuDepart,
-			int lieuRetour, float montantCarburant, int litreCarburant, String commentaire, int kmTotal, int kmPlein,
+			int lieuRetour,String natureDeplacement, float montantCarburant, int litreCarburant, String commentaire, int kmTotal, int kmPlein,
 			int distanceParcouru, List<Personne> conducteurs) {
 		this.dateDepart = dateDepart;
 		this.dateRetour = dateRetour;
@@ -139,6 +140,14 @@ public class Deplacement {
 
 	public void setConducteurs(List<Personne> conducteurs) {
 		this.conducteurs = conducteurs;
+	}
+	
+	public String getNatureDeplacement() {
+		return natureDeplacement;
+	}
+
+	public void setNatureDeplacement(String natureDeplacement) {
+		this.natureDeplacement = natureDeplacement;
 	}
 
 	@Override

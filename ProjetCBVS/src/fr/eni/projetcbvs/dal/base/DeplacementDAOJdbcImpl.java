@@ -20,10 +20,10 @@ import fr.eni.projetcbvs.dal.DeplacementDAO;
 
 public class DeplacementDAOJdbcImpl implements DeplacementDAO{
 
-	private static final String SQL_SELECTBYID = "select idDeplacement, dateDepart, dateRetour, lieuDepart, lieuRetour, montantCarburant, litreCarburant, commentaire, kmTotal, kmPlein, distanceParcouru from Deplacement where idDeplacement = ?";
-	private static final String SQL_SELECTALL = "select idDeplacement, dateDepart, dateRetour, lieuDepart, lieuRetour, montantCarburant, litreCarburant, commentaire, kmTotal, kmPlein, distanceParcouru from Deplacement";
-	private static final String SQL_UPDATE = "update Deplacement set dateDepart=?,dateRetour=?,lieuDepart=?,lieuRetour=?,montantCarburant=?,litreCarburant=?,commentaire=?,kmTotal=?,kmPlein=?,distanceParcouru=? where idDeplacement=?";
-	private static final String SQL_INSERT = "insert into Deplacement(dateDepart, dateRetour, lieuDepart, lieuRetour, montantCarburant, litreCarburant, commentaire, kmTotal, kmPlein, distanceParcouru) values(?,?,?,?,?,?,?,?,?,?)";
+	private static final String SQL_SELECTBYID = "select idDeplacement, dateDepart, dateRetour, lieuDepart, lieuRetour, natureDeplacement, montantCarburant, litreCarburant, commentaire, kmTotal, kmPlein, distanceParcouru from Deplacement where idDeplacement = ?";
+	private static final String SQL_SELECTALL = "select idDeplacement, dateDepart, dateRetour, lieuDepart, lieuRetour, natureDeplacement, montantCarburant, litreCarburant, commentaire, kmTotal, kmPlein, distanceParcouru from Deplacement";
+	private static final String SQL_UPDATE = "update Deplacement set dateDepart=?,dateRetour=?,lieuDepart=?,lieuRetour=?,natureDeplacement=?,montantCarburant=?,litreCarburant=?,commentaire=?,kmTotal=?,kmPlein=?,distanceParcouru=? where idDeplacement=?";
+	private static final String SQL_INSERT = "insert into Deplacement(dateDepart, dateRetour, lieuDepart, lieuRetour, natureDeplacement, montantCarburant, litreCarburant, commentaire, kmTotal, kmPlein, distanceParcouru) values(?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String SQL_DELETE = "delete from Deplacement where idDeplacement=?";
 	
 	// Constructeur
@@ -41,12 +41,13 @@ public class DeplacementDAOJdbcImpl implements DeplacementDAO{
 			rqt.setDate(2,new Date (deplacement.getDateRetour().getTimeInMillis()));
 			rqt.setInt(3,deplacement.getLieuDepart());
 			rqt.setInt(4,deplacement.getLieuRetour());
-			rqt.setFloat(5,deplacement.getMontantCarburant());
-			rqt.setInt(6,deplacement.getLitreCarburant());
-			rqt.setString(7,deplacement.getCommentaire());
-			rqt.setInt(8,deplacement.getKmTotal());
-			rqt.setInt(9,deplacement.getKmPlein());
-			rqt.setInt(10,deplacement.getDistanceParcouru());
+			rqt.setString(5,deplacement.getNatureDeplacement());
+			rqt.setFloat(6,deplacement.getMontantCarburant());
+			rqt.setInt(7,deplacement.getLitreCarburant());
+			rqt.setString(8,deplacement.getCommentaire());
+			rqt.setInt(9,deplacement.getKmTotal());
+			rqt.setInt(10,deplacement.getKmPlein());
+			rqt.setInt(11,deplacement.getDistanceParcouru());
 			rqt.executeUpdate();
 			ResultSet key = rqt.getGeneratedKeys();
 			key.next();
@@ -78,13 +79,14 @@ public class DeplacementDAOJdbcImpl implements DeplacementDAO{
 			rqt.setDate(2,new Date (deplacement.getDateRetour().getTimeInMillis()));
 			rqt.setInt(3,deplacement.getLieuDepart());
 			rqt.setInt(4,deplacement.getLieuRetour());
-			rqt.setFloat(5,deplacement.getMontantCarburant());
-			rqt.setInt(6,deplacement.getLitreCarburant());
-			rqt.setString(7,deplacement.getCommentaire());
-			rqt.setInt(8,deplacement.getKmTotal());
-			rqt.setInt(9,deplacement.getKmPlein());
-			rqt.setInt(10,deplacement.getDistanceParcouru());
-			rqt.setInt(11,deplacement.getIdDeplacement());
+			rqt.setString(5,deplacement.getNatureDeplacement());
+			rqt.setFloat(6,deplacement.getMontantCarburant());
+			rqt.setInt(7,deplacement.getLitreCarburant());
+			rqt.setString(8,deplacement.getCommentaire());
+			rqt.setInt(9,deplacement.getKmTotal());
+			rqt.setInt(10,deplacement.getKmPlein());
+			rqt.setInt(11,deplacement.getDistanceParcouru());
+			rqt.setInt(12,deplacement.getIdDeplacement());
 			rqt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -144,7 +146,7 @@ public class DeplacementDAOJdbcImpl implements DeplacementDAO{
 				dateDepart.setTime(rs.getDate("dateDepart"));
 				dateRetour.setTime(rs.getDate("dateRetour"));
 				listeP = conducteurDAO.selectConducteurbyDeplacement(rs.getInt("idDeplacement"));
-				deplacement = new Deplacement(rs.getInt("idDeplacement"),dateDepart,dateRetour,rs.getInt("lieuDepart"),rs.getInt("lieuRetour"),rs.getFloat("montantCarburant"),rs.getInt("litreCarburant"),rs.getString("commentaire"),rs.getInt("kmTotal"),rs.getInt("kmPlein"),rs.getInt("distanceParcouru"),listeP);
+				deplacement = new Deplacement(rs.getInt("idDeplacement"),dateDepart,dateRetour,rs.getInt("lieuDepart"),rs.getInt("lieuRetour"),rs.getString("natureDeplacement"),rs.getFloat("montantCarburant"),rs.getInt("litreCarburant"),rs.getString("commentaire"),rs.getInt("kmTotal"),rs.getInt("kmPlein"),rs.getInt("distanceParcouru"),listeP);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -180,7 +182,7 @@ public class DeplacementDAOJdbcImpl implements DeplacementDAO{
 				dateDepart.setTime(rs.getDate("dateDepart"));
 				dateRetour.setTime(rs.getDate("dateRetour"));
 				listeP = conducteurDAO.selectConducteurbyDeplacement(rs.getInt("idDeplacement"));
-				deplacement = new Deplacement(rs.getInt("idDeplacement"),dateDepart,dateRetour,rs.getInt("lieuDepart"),rs.getInt("lieuRetour"),rs.getFloat("montantCarburant"),rs.getInt("litreCarburant"),rs.getString("commentaire"),rs.getInt("kmTotal"),rs.getInt("kmPlein"),rs.getInt("distanceParcouru"),listeP);
+				deplacement = new Deplacement(rs.getInt("idDeplacement"),dateDepart,dateRetour,rs.getInt("lieuDepart"),rs.getInt("lieuRetour"),rs.getString("natureDeplacement"),rs.getFloat("montantCarburant"),rs.getInt("litreCarburant"),rs.getString("commentaire"),rs.getInt("kmTotal"),rs.getInt("kmPlein"),rs.getInt("distanceParcouru"),listeP);
 				liste.add(deplacement);
 			}
 		} catch (SQLException e) {

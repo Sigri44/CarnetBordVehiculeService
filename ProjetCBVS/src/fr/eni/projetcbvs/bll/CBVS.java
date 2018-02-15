@@ -8,13 +8,13 @@ import fr.eni.projetcbvs.dal.PersonneDAO;
 public class CBVS {
 
 	public static boolean verifAnim(int niveau){
-		boolean animateur;
+		boolean administrateur;
 		if(niveau != 1){
-			animateur=false;
+			administrateur=false;
 		}else{
-			animateur=true;
+			administrateur=true;
 		}
-		return animateur;
+		return administrateur;
 	}
 	
 	public static int VerifConnexion(String email, String password){

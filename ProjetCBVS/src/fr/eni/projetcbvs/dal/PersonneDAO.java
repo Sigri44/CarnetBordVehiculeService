@@ -9,4 +9,5 @@ public interface PersonneDAO {
 	public void delete(int id) throws DALException;
 	public Personne selectById(int id) throws DALException;
 	public List<Personne> selectAll() throws DALException;
+	public Personne selectByEmailAndPassword(String email, String password) throws DALException;
 }

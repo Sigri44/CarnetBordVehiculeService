@@ -19,6 +19,7 @@ public class PersonneDAOJdbcImpl implements PersonneDAO{
 	private static final String SQL_UPDATE = "update Personne set nom=?,prenom=?,email=?,motDePasse=?,niveau=? where idPersonne=?";
 	private static final String SQL_INSERT = "insert into Personne(nom, prenom, email, motDePasse, niveau) values(?,?,?,?,?)";
 	private static final String SQL_DELETE = "delete from Personne where idPersonne=?";
+	private static final String SQL_VERIFUTILISATEUR = "select idPersonne, nom, prenom, email, motDePasse, niveau from Personne where email=? And Password=?";
 	
 	// Constructeur
 	public PersonneDAOJdbcImpl() {
@@ -165,5 +166,35 @@ public class PersonneDAOJdbcImpl implements PersonneDAO{
 			}
 		}
 		return liste;
+	}
+
+	@Override
+	public Personne selectByEmailAndPassword(String email, String password) throws DALException {
+		Connection cnx = null;
+		PreparedStatement rqt = null;
+		ResultSet rs = null;
+		Personne personne = null;
+		try {
+			cnx = AccesBase.getConnection();
+			rqt = cnx.prepareStatement(SQL_VERIFUTILISATEUR);
+			rqt.setString(1, email);
+			rqt.setString(2, password);
+			rs = rqt.executeQuery();
+			if (rs.next()) {
+				personne = new Personne(rs.getInt("idPersonne"),rs.getString("nom"),rs.getString("prenom"),rs.getString("email"), rs.getString("motDePasse"),rs.getInt("niveau"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rqt != null) {
+					rqt.close();
+					cnx.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return personne;
 	}
 }

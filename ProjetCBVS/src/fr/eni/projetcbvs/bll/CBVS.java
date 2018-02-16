@@ -7,7 +7,7 @@ import fr.eni.projetcbvs.dal.PersonneDAO;
 
 public class CBVS {
 
-	public static boolean verifAnim(int niveau){
+	public static boolean verifAdmin(int niveau){
 		boolean administrateur;
 		if(niveau != 1){
 			administrateur=false;
@@ -17,7 +17,7 @@ public class CBVS {
 		return administrateur;
 	}
 	
-	public static int VerifConnexion(String email, String password){
+	public int VerifConnexion(String email, String password){
 		int niveau = 0;
 		Personne personne = null;
 		PersonneDAO personneDAO = DaoFactory.getPersonneDAO();

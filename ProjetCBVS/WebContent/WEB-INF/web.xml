@@ -16,4 +16,31 @@
 		<servlet-name>connexionCompte</servlet-name>
 		<url-pattern>/login/pageAcces</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<display-name>accesAdmin</display-name>
+		<servlet-name>accesAdmin</servlet-name>
+		<jsp-file>/index.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>accesAdmin</servlet-name>
+		<url-pattern>/accesAdmin</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<display-name>accesUser</display-name>
+		<servlet-name>accesUser</servlet-name>
+		<jsp-file>/formulaire/depart.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>accesUser</servlet-name>
+		<url-pattern>/accesUser</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<display-name>connexion</display-name>
+		<servlet-name>connexion</servlet-name>
+		<servlet-class>fr.eni.projetcbvs.servlet.PageAccesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>connexion</servlet-name>
+		<url-pattern>/connexion</url-pattern>
+	</servlet-mapping>
 </web-app>

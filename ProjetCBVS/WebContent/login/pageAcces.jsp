@@ -11,7 +11,7 @@
         </header>
         <section>
             <div class="row">
-                <form method="post" action="connexion.php">
+                <form method="post" action="<%=request.getContextPath() %>/connexion">
                     <fieldset>
                         <legend>Connexion</legend>
                         <p>

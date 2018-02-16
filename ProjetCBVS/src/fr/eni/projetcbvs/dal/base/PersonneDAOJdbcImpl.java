@@ -14,12 +14,12 @@ import fr.eni.projetcbvs.dal.PersonneDAO;
 
 public class PersonneDAOJdbcImpl implements PersonneDAO{
 	
-	private static final String SQL_SELECTBYID = "select idPersonne, nom, prenom, email, motDePasse, niveau from Personne where idPersonne = ?";
-	private static final String SQL_SELECTALL = "select idPersonne, nom, prenom, email, motDePasse, niveau from Personne";
-	private static final String SQL_UPDATE = "update Personne set nom=?,prenom=?,email=?,motDePasse=?,niveau=? where idPersonne=?";
-	private static final String SQL_INSERT = "insert into Personne(nom, prenom, email, motDePasse, niveau) values(?,?,?,?,?)";
-	private static final String SQL_DELETE = "delete from Personne where idPersonne=?";
-	private static final String SQL_VERIFUTILISATEUR = "select idPersonne, nom, prenom, email, motDePasse, niveau from Personne where email=? And Password=?";
+	private static final String SQL_SELECTBYID = "SELECT idPersonne, nom, prenom, email, motDePasse, niveau FROM Personne WHERE idPersonne = ?";
+	private static final String SQL_SELECTALL = "SELECT idPersonne, nom, prenom, email, motDePasse, niveau FROM Personne";
+	private static final String SQL_UPDATE = "UPDATE Personne SET nom=?,prenom=?,email=?,motDePasse=?,niveau=? WHERE idPersonne=?";
+	private static final String SQL_INSERT = "INSERT INTO Personne(nom, prenom, email, motDePasse, niveau) VALUES(?,?,?,?,?)";
+	private static final String SQL_DELETE = "DELETE FROM Personne WHERE idPersonne=?";
+	private static final String SQL_VERIFUTILISATEUR = "SELECT idPersonne, nom, prenom, email, motDePasse, niveau FROM Personne WHERE email=? And motDePasse=?";
 	
 	// Constructeur
 	public PersonneDAOJdbcImpl() {
